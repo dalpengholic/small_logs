@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 깃헙페이지 with jekyll-theme-yat 생성시 이슈들, 해결방법
-subtitle: 허상을 본 자아의 두개의 다른 대답
 categories: markdown
 tags: [깃헙페이지, 깃헙 엑션]
 ---
