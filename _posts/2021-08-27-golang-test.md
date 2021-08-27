@@ -6,14 +6,13 @@ categories: Golang
 tags: [Golang, test]
 ---
 - Create a coverage report
-```Shell
-go test -coverprofile=coverage.out
 
+```
+go test -coverprofile=coverage.out
 tag.ItemTag
 PASS
 coverage: 100.0% of statements
 ```
-
 
 - See in html format
 ```Shell
