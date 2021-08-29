@@ -5,28 +5,28 @@ subtitle: Golang test command
 categories: Golang
 tags: [Golang, test]
 ---
-- Create a coverage report
+Create a coverage report
 
-```
+```Shell
 go test -coverprofile=coverage.out
 tag.ItemTag
 PASS
 coverage: 100.0% of statements
 ```
 
-- See in html format
+See in html format
 ```Shell
 go tool cover -html=coverage.out
 ```
 
-- Test at the current folder
+Test at the current folder
 ```Shell
 $  go test .
 
 ok      gomarket/tag    0.006s
 ```
 
-- Test verbose?
+Test verbose?
 ```Shell
 $  go test -v
 
