@@ -5,6 +5,9 @@ subtitle:
 categories: Ghost
 tags: [Ghost, docker]
 ---
+실패1.
+- docker run -d --name some-ghost arm64v8/ghost
+
 성공1.
 - security rule: open 3001 ingress
 - docker run -d --name some-ghost -e url=http://localhost:3001 -p 3001:2368 arm64v8/ghost
@@ -14,3 +17,7 @@ tags: [Ghost, docker]
 - security rule: open 3002 ingress
 - docker run -d --name some-ghost1 -e url=http://localhost:3001 -p 3001:2368 arm64v8/ghost
 - docker run -d --name some-ghost2 -e url=http://localhost:3001 -p 3001:2368 arm64v8/ghost
+
+성공3.
+- security rule: open 2368 ingress
+- docker run -d --name some-ghost -e url=http://localhost:2368 -p 2368:2368 arm64v8/ghost
