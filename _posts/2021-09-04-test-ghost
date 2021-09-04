@@ -31,3 +31,4 @@ tags: [Ghost, docker]
 
 성공6.
 - docker run -d --name some-ghost1 -p 3001:2368 -v some-ghost1-data:/var/lib/ghost/content arm64v8/ghost
+- docker run -d --name some-ghost2 -p 3002:2368 -v some-ghost2-data:/var/lib/ghost/content arm64v8/ghost
