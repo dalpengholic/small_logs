@@ -5,6 +5,12 @@ subtitle:
 categories: Ghost
 tags: [Ghost, docker]
 ---
-성공
+성공1.
 - security rule: open 3001 ingress
 - docker run -d --name some-ghost -e url=http://localhost:3001 -p 3001:2368 arm64v8/ghost
+
+성공2.
+- security rule: open 3001 ingress
+- security rule: open 3002 ingress
+- docker run -d --name some-ghost1 -e url=http://localhost:3001 -p 3001:2368 arm64v8/ghost
+- docker run -d --name some-ghost2 -e url=http://localhost:3001 -p 3001:2368 arm64v8/ghost
