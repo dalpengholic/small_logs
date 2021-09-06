@@ -33,7 +33,11 @@ tags: [Ghost, docker]
 - docker run -d --name some-ghost1 -p 3001:2368 -v some-ghost1-data:/var/lib/ghost/content arm64v8/ghost
 - docker run -d --name some-ghost2 -p 3002:2368 -v some-ghost2-data:/var/lib/ghost/content arm64v8/ghost
 
-성공7.
+성공7. 백업
 - [link](https://blog.ssdnodes.com/blog/docker-backup-volumes/)
 - mkdir ~/backup
 - docker run --rm --volumes-from some-ghost1 -v ~/backup:/backup ubuntu bash -c "cd /var/lib/ghost/content && tar cvf /backup/ghost.tar ."
+
+성공8. 복원
+- docker run --rm -v restored-some-ghost1:/recover -v ~/backup:/backup ubuntu bash -c "cd /recover && tar xvf /backup/ghost.tar"
+- docker run -d -v restored-some-ghost1:/var/lib/ghost/content -p 3002:2368 arm64v8/ghos
