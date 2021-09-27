@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="/small_logs/feed.xml" rel="self" type="application/atom+xml" /><link href="/small_logs/" rel="alternate" type="text/html" /><updated>2021-09-27T13:22:58+00:00</updated><id>/small_logs/feed.xml</id><title type="html">My Small Logs</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>dalpengholic</name></author><entry><title type="html">Golang DB 사용관련 생각</title><link href="/small_logs/golang/2021/09/27/golang-db.html" rel="alternate" type="text/html" title="Golang DB 사용관련 생각" /><published>2021-09-27T00:00:00+00:00</published><updated>2021-09-27T00:00:00+00:00</updated><id>/small_logs/golang/2021/09/27/golang-db</id><content type="html" xml:base="/small_logs/golang/2021/09/27/golang-db.html">&lt;p&gt;고랭에서 DB사용 관련 개인의 추정사항을 적은 글로
+사실과 차이가 있을수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-database&quot;&gt;1. Database&lt;/h2&gt;
+&lt;p&gt;Database란 데이터의 베이스다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-dbms&quot;&gt;2. DBMS&lt;/h2&gt;
+&lt;p&gt;Database Management System은 데이터베이스에 조회, 기록, 수정, 삭제를 담당해주는 DB전용 소프트웨어 이다. 
+데이터베이스를 사용하고 싶은 유저는 직접 데이터를 CRUD하지 않고, DBMS에 SQL이라는
+언어를 전달하고 DBMS는 이를 받아서 CRUD를 수행한다. 일종의 에이전트 역할을 함.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-db-interface&quot;&gt;3. DB Interface&lt;/h2&gt;
+&lt;p&gt;그런데 DBMS에 조차도 직접 접근후 사용하지 않고, DB Interface, Golang에서는 Database/sql 패키지를 임포트 후 이를 통해 CRUD를 진행한다. Database/sql 패키지는 인터페이스 이기 때문에 method를 implement를 해줘야 한다. 이를 위해서
+db driver를 dbms에 맞춰서 anonymously하게 import를 해준다. 예를 들면 sqlite를 DBMS로 쓰기 위해서..&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Go&quot;&gt;import (
+	&quot;database/sql&quot; //인터페이스 
+	_ &quot;github.com/mattn/go-sqlite3&quot; //DBMS드라이버
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;생각&quot;&gt;생각&lt;/h2&gt;
+&lt;p&gt;난 SQL도 몰랐고, DBMS가 뭔지도 개념이 없었고, DB Interface도 몰랐고, 드라이버도 몰랐다.&lt;/p&gt;
+
+&lt;p&gt;이런것들이 중첩이 되니까, Golang으로 DB를 사용하는 것을 보면 아득하게 어려웠다.&lt;/p&gt;
+
+&lt;p&gt;지금은 이런것들이 중첩이 된 걸 아니까.. 그래도 어렵다. 일단 토이로라도 뭘 만들어 봐야지..&lt;/p&gt;</content><author><name>dalpengholic</name></author><category term="Golang" /><category term="DB" /><category term="Golang" /><summary type="html">고랭에서 DB사용 관련 개인의 추정사항을 적은 글로 사실과 차이가 있을수 있습니다.</summary></entry><entry><title type="html">20개 이상은 포스트가 안되나?</title><link href="/small_logs/test/2021/09/06/something-not-sure.html" rel="alternate" type="text/html" title="20개 이상은 포스트가 안되나?" /><published>2021-09-06T00:00:00+00:00</published><updated>2021-09-06T00:00:00+00:00</updated><id>/small_logs/test/2021/09/06/something-not-sure</id><content type="html" xml:base="/small_logs/test/2021/09/06/something-not-sure.html">&lt;p&gt;테스트&lt;/p&gt;
+&lt;h1 id=&quot;왜-20개-이상은-안되나&quot;&gt;왜 20개 이상은 안되나?&lt;/h1&gt;</content><author><name>dalpengholic</name></author><category term="test" /><category term="test" /><summary type="html">테스트 왜 20개 이상은 안되나?</summary></entry><entry><title type="html">Ghost on arm server</title><link href="/small_logs/ghost/2021/09/04/ghost-test.html" rel="alternate" type="text/html" title="Ghost on arm server" /><published>2021-09-04T00:00:00+00:00</published><updated>2021-09-04T00:00:00+00:00</updated><id>/small_logs/ghost/2021/09/04/ghost-test</id><content type="html" xml:base="/small_logs/ghost/2021/09/04/ghost-test.html">&lt;p&gt;실패1.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;docker run -d –name some-ghost arm64v8/ghost&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;성공1.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;security rule: open 3001 ingress&lt;/li&gt;
+  &lt;li&gt;docker run -d –name some-ghost -e url=http://localhost:3001 -p 3001:2368 arm64v8/ghost&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;성공2.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;security rule: open 3001 ingress&lt;/li&gt;
+  &lt;li&gt;security rule: open 3002 ingress&lt;/li&gt;
+  &lt;li&gt;docker run -d –name some-ghost1 -e url=http://localhost:3001 -p 3001:2368 arm64v8/ghost&lt;/li&gt;
+  &lt;li&gt;docker run -d –name some-ghost2 -e url=http://localhost:3001 -p 3001:2368 arm64v8/ghost&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;성공3.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;security rule: open 2368 ingress&lt;/li&gt;
+  &lt;li&gt;docker run -d –name some-ghost -e url=http://localhost:2368 -p 2368:2368 arm64v8/ghost&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;성공4.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;security rule: open 3003 ingress&lt;/li&gt;
+  &lt;li&gt;docker run -d –name some-ghost5 -p 3003:2368 arm64v8/ghost&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;성공5.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;docker run -d –name some-ghost -p 3001:2368 -v /path/to/ghost/blog:/var/lib/ghost/content arm64v8/ghost:alpine&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;성공6.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;docker run -d –name some-ghost1 -p 3001:2368 -v some-ghost1-data:/var/lib/ghost/content arm64v8/ghost&lt;/li&gt;
+  &lt;li&gt;docker run -d –name some-ghost2 -p 3002:2368 -v some-ghost2-data:/var/lib/ghost/content arm64v8/ghost&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;성공7. 백업&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.ssdnodes.com/blog/docker-backup-volumes/&quot;&gt;link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;mkdir ~/backup&lt;/li&gt;
+  &lt;li&gt;docker run –rm –volumes-from some-ghost1 -v ~/backup:/backup ubuntu bash -c “cd /var/lib/ghost/content &amp;amp;&amp;amp; tar cvf /backup/ghost.tar .”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;성공8. 복원&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;docker run –rm -v restored-some-ghost1:/recover -v ~/backup:/backup ubuntu bash -c “cd /recover &amp;amp;&amp;amp; tar xvf /backup/ghost.tar”&lt;/li&gt;
+  &lt;li&gt;docker run -d -v restored-some-ghost1:/var/lib/ghost/content -p 3002:2368 arm64v8/ghos&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>dalpengholic</name></author><category term="Ghost" /><category term="Ghost" /><category term="docker" /><summary type="html">실패1. docker run -d –name some-ghost arm64v8/ghost</summary></entry><entry><title type="html">Golang test 1</title><link href="/small_logs/golang/2021/08/27/golang-test.html" rel="alternate" type="text/html" title="Golang test 1" /><published>2021-08-27T00:00:00+00:00</published><updated>2021-08-27T00:00:00+00:00</updated><id>/small_logs/golang/2021/08/27/golang-test</id><content type="html" xml:base="/small_logs/golang/2021/08/27/golang-test.html">&lt;p&gt;Create a coverage report&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Shell&quot;&gt;go test -coverprofile=coverage.out
+tag.ItemTag
+PASS
+coverage: 100.0% of statements
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;See in html format&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-Shell&quot;&gt;go tool cover -html=coverage.out
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Test at the current folder&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-Shell&quot;&gt;$  go test .
+
+ok      gomarket/tag    0.006s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Test verbose?&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-Shell&quot;&gt;$  go test -v
+
+=== RUN   TestNewTag
+tag.ItemTag
+--- PASS: TestNewTag (0.00s)
+PASS
+ok      gomarket/tag    0.006s
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>dalpengholic</name></author><category term="Golang" /><category term="Golang" /><category term="test" /><summary type="html">Create a coverage report</summary></entry><entry><title type="html">Golang package 2</title><link href="/small_logs/golang/2021/08/25/golang-package2.html" rel="alternate" type="text/html" title="Golang package 2" /><published>2021-08-25T00:00:00+00:00</published><updated>2021-08-25T00:00:00+00:00</updated><id>/small_logs/golang/2021/08/25/golang-package2</id><content type="html" xml:base="/small_logs/golang/2021/08/25/golang-package2.html">&lt;p&gt;고랭 패키지 관련&lt;/p&gt;
+
+&lt;p&gt;하나의 폴더 밑에 두개의 go 파일을 같은 이름의 페키지로 묶어도 잘 불러온다&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MainFolder
+ |
+ | main.go (package mainFolder)
+ | go.mod
+ |
+ --SubFolder (package subFolder)
+   |
+   | sub.go
+   | sub2.go
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위와 같은 구조의 경우&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;최상위 폴더서 go mod init blahblah/mainfolder 혹은 go mod init mainfolder&lt;/li&gt;
+  &lt;li&gt;main.go 에서 import시 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mainFolder/subFolder&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;그러면 sub.go 그리고 sub2.go에 있는 블럭을 모두 사용가능&lt;/p&gt;</content><author><name>dalpengholic</name></author><category term="Golang" /><category term="Golang" /><category term="package" /><summary type="html">고랭 패키지 관련</summary></entry><entry><title type="html">Golang package</title><link href="/small_logs/golang/2021/08/24/golang-package.html" rel="alternate" type="text/html" title="Golang package" /><published>2021-08-24T00:00:00+00:00</published><updated>2021-08-24T00:00:00+00:00</updated><id>/small_logs/golang/2021/08/24/golang-package</id><content type="html" xml:base="/small_logs/golang/2021/08/24/golang-package.html">&lt;p&gt;고랭 패키지 관련&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MainFolder
+ |
+ | main.go (package mainFolder)
+ | go.mod
+ |
+ --SubFolder (package subFolder)
+   |
+   | sub.go
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위와 같은 구조의 경우&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;최상위 폴더서 go mod init blahblah/mainfolder 혹은 go mod init mainfolder&lt;/li&gt;
+  &lt;li&gt;main.go 에서 import시 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mainFolder/subFolder&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;최상위 폴더서 go mod init을 하게 되면 그 하위에 있는 것들은 모듈의 일부로 파악하는듯&lt;/p&gt;</content><author><name>dalpengholic</name></author><category term="Golang" /><category term="Golang" /><category term="package" /><summary type="html">고랭 패키지 관련</summary></entry><entry><title type="html">Install on docker compose on arm64</title><link href="/small_logs/docker/2021/08/21/docker-compose-on-arm64.html" rel="alternate" type="text/html" title="Install on docker compose on arm64" /><published>2021-08-21T00:00:00+00:00</published><updated>2021-08-21T00:00:00+00:00</updated><id>/small_logs/docker/2021/08/21/docker-compose-on-arm64</id><content type="html" xml:base="/small_logs/docker/2021/08/21/docker-compose-on-arm64.html">&lt;p&gt;특이점&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;docker-compose is a Docker CLI plugin&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.docker/cli-plugins&lt;/code&gt; 먼저 만들어야 함&lt;/li&gt;
+  &lt;li&gt;OCI에서 uname -m을 하면 aarch64가 나오므로 매뉴얼로 url을 찾아줘야함&lt;/li&gt;
+  &lt;li&gt;커맨드가 docker-compose에서 docker compose로 바뀜&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;성공 Docker compose on arm64&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. mkdir -p ~/.docker/cli-plugins
+2. sudo curl -L &quot;https://github.com/docker/compose-cli/releases/download/v2.0.0-rc.1/docker-compose-linux-arm64&quot; -o ~/.docker/cli-plugins/docker-compose
+3. chmod +x ~/.docker/cli-plugins/docker-compose
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;기존에러 이유 (도커 공식 홈페이지)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+2. sudo chmod +x /usr/local/bin/docker-compose
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>dalpengholic</name></author><category term="docker" /><category term="docker" /><category term="docker-compose" /><summary type="html">특이점 docker-compose is a Docker CLI plugin ~/.docker/cli-plugins 먼저 만들어야 함 OCI에서 uname -m을 하면 aarch64가 나오므로 매뉴얼로 url을 찾아줘야함 커맨드가 docker-compose에서 docker compose로 바뀜</summary></entry><entry><title type="html">Refactoring will not happen until it is forced by the system</title><link href="/small_logs/coding,/plan/2021/08/20/coding1.html" rel="alternate" type="text/html" title="Refactoring will not happen until it is forced by the system" /><published>2021-08-20T00:00:00+00:00</published><updated>2021-08-20T00:00:00+00:00</updated><id>/small_logs/coding,/plan/2021/08/20/coding1</id><content type="html" xml:base="/small_logs/coding,/plan/2021/08/20/coding1.html">&lt;p&gt;이번 글의 제목은 멘토 &lt;a href=&quot;https://www.linkedin.com/in/beomsu-chang/&quot;&gt;장범수&lt;/a&gt;과 대화를 나누면서 얻은 한구절이다.&lt;/p&gt;
+
+&lt;p&gt;대충 어떻게 체계적으로 개발 할 것인지 생각해보면 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;금요일: 코드 리팩토링 및 반성 및 계획세우기&lt;/li&gt;
+  &lt;li&gt;목요일: 개발(오전) 마스터 브랜치에 커밋 or Release 브랜치에 커밋 (오후)&lt;/li&gt;
+  &lt;li&gt;화,수요일: 개발&lt;/li&gt;
+  &lt;li&gt;월요일: 계획(오전) 개발(오후)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;오늘은 리팩토링?의 하나로 테스트 코드라는 걸 간단히라도 작성해봐야겠다.&lt;/p&gt;</content><author><name>dalpengholic</name></author><category term="coding," /><category term="plan" /><category term="coding" /><summary type="html">이번 글의 제목은 멘토 장범수과 대화를 나누면서 얻은 한구절이다.</summary></entry><entry><title type="html">신해철 “Myself” vs N.EX.T “The Return of N.EX.T Part 1”:” The Being”</title><link href="/small_logs/%EC%9E%90%EC%95%84/2021/08/20/thought3.html" rel="alternate" type="text/html" title="신해철 “Myself” vs N.EX.T “The Return of N.EX.T Part 1”:” The Being”" /><published>2021-08-20T00:00:00+00:00</published><updated>2021-08-20T00:00:00+00:00</updated><id>/small_logs/%EC%9E%90%EC%95%84/2021/08/20/thought3</id><content type="html" xml:base="/small_logs/%EC%9E%90%EC%95%84/2021/08/20/thought3.html">&lt;p&gt;함께 들으면 재미있는 두 앨범&lt;/p&gt;
+
+&lt;p&gt;Part1과 Part2앨범은 제목 처럼 이어져 있지만, 앨범의 초점이 자아에게 맞춰져 있는점에서 (Myself앨범은 자아가 자아를 보는 거리가 느껴지고, Part1은 나를 둘러싼 껍질들을 공격적으로 찾는 느낌이랄까? ) 두 앨범을 감상하면 좋다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1991.4.5
+9곡
+39:44
+전곡 작사, 작곡, 편곡 신해철
+
+나에게 비춰진 자아
+너에게 비춰진 자아
+타인에게 비춰진 자아
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://open.spotify.com/album/201xIzWgRnQlZXGSkaqYQy?si=Vzk6xsVASMGjSdFQbhn7Pg&quot;&gt;신해철 “Myself”&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1994.5.1
+8곡
+39:34
+
+껍질을 인지하고 부숴나가는 자아
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://open.spotify.com/album/5xTkJDRfM8liGCewMbRKi4?si=QlssJ77kS-aQ-tA50UGe_w&quot;&gt;N.EX.T “The Return of N.EX.T Part 1: The Being”&lt;/a&gt;&lt;/p&gt;</content><author><name>dalpengholic</name></author><category term="자아" /><category term="신해철" /><category term="N.EX.T" /><summary type="html">함께 들으면 재미있는 두 앨범</summary></entry><entry><title type="html">Issues about my GitHub page with jekyll-theme-yat and how to solve 2</title><link href="/small_logs/markdown/2021/08/19/github-page-issues2.html" rel="alternate" type="text/html" title="Issues about my GitHub page with jekyll-theme-yat and how to solve 2" /><published>2021-08-19T00:00:00+00:00</published><updated>2021-08-19T00:00:00+00:00</updated><id>/small_logs/markdown/2021/08/19/github-page-issues2</id><content type="html" xml:base="/small_logs/markdown/2021/08/19/github-page-issues2.html">&lt;p&gt;Short summary after trouble shooting&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build-jekyll.yml&lt;/code&gt; for github action can be updated so I needed to update it&lt;/li&gt;
+  &lt;li&gt;Need to check other’s solution first&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;issue-unable-to-build-github-page&quot;&gt;Issue. Unable to build GitHub page&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;What happened: All of sudden, the github action pipeline broke during building&lt;/li&gt;
+  &lt;li&gt;Why?: build-jekyll.yml at &lt;a href=&quot;https://github.com/jeffreytse/jekyll-deploy-action&quot;&gt;github action repo&lt;/a&gt; has been changed&lt;/li&gt;
+  &lt;li&gt;How I know: I reported the error and I got a &lt;a href=&quot;https://github.com/jeffreytse/jekyll-theme-yat/issues/57&quot;&gt;reply&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;How to solve?:
+    &lt;ul&gt;
+      &lt;li&gt;I updated my &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build-jekyll.yml&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/dalpengholic/small_logs/commit/649e9274eb7b0ff15534fbac8fb6cce55c71d2c1&quot;&gt;The commit I made &lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Duplicate&lt;/code&gt; label added, which means that I could have found the solution before I reported my issue.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>dalpengholic</name></author><category term="markdown" /><category term="GitHub" /><category term="GitHub Action" /><category term="깃헙" /><category term="깃헙액션" /><summary type="html">Short summary after trouble shooting build-jekyll.yml for github action can be updated so I needed to update it Need to check other’s solution first</summary></entry></feed>
